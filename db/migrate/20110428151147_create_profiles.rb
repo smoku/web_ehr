@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :name
       t.date :birth_date
       t.string :blood_type
-      t.integer :sex
+      t.integer :gender
       t.timestamps
     end
   end
