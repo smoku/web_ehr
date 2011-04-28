@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  birth_date: 2011-04-28
+  blood_type: MyString
+  sex: 1
+
+two:
+  name: MyString
+  birth_date: 2011-04-28
+  blood_type: MyString
+  sex: 1

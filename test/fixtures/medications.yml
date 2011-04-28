@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  started_date: 2011-04-28
+  ended_date: 2011-04-28
+  route: MyString
+  strength: MyString
+  dose: MyString
+  freguency: MyString
+  note: MyText
+  profile_id: 1
+
+two:
+  name: MyString
+  started_date: 2011-04-28
+  ended_date: 2011-04-28
+  route: MyString
+  strength: MyString
+  dose: MyString
+  freguency: MyString
+  note: MyText
+  profile_id: 1
