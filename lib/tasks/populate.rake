@@ -2,6 +2,8 @@ namespace :db do
   desc "Populate db"
   task :populate => :environment do
     
+    Profile.destroy_all
+    
     20.times do |i|
       profile = Profile.new
       profile.name = Faker::Name.name
@@ -16,6 +18,7 @@ namespace :db do
         medication.ended_date = medication.started_date + range_rand(10,30).days
         medication.strength = "500mg"
         medication.dose = "2 tablets"
+        medication.route = "by mouth"
         medication.frequency = "2 times a day"
         medication.note = Faker::Lorem.sentence(8)
       end

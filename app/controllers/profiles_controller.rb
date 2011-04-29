@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
         medication_data[:started_date] = medication.started_date
         medication_data[:ended_date] = medication.ended_date
         medication_data[:strength] = medication.strength
+        medication_data[:route] = medication.route
         medication_data[:dose] = medication.dose
         medication_data[:frequency] = medication.frequency
         medication_data[:note] = medication.note
