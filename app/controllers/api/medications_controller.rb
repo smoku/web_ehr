@@ -7,7 +7,7 @@ class Api::MedicationsController < Api::BaseController
     if @medication.save
       render :json => @medication, :status => :created, :location => @medication
     else
-      render :json => @medication.errors, :status => :unprocessable_entity
+      render :json => @medication.errors.full_messages, :status => :unprocessable_entity
     end
   end
   

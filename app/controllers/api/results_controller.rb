@@ -7,7 +7,7 @@ class Api::ResultsController < Api::BaseController
     if @result.save
       render :json => @result, :status => :created, :location => @result
     else
-      render :json => @result.errors, :status => :unprocessable_entity
+      render :json => @result.errors.full_messages, :status => :unprocessable_entity
     end
   end
   
