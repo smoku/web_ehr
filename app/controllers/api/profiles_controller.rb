@@ -15,7 +15,7 @@ class Api::ProfilesController < Api::BaseController
                      }
                   } 
     
-    render :json => @profiles.to_json(json_config)
+    render :json => @profiles.to_json(:only => profile_fields)
   end
   
 end
