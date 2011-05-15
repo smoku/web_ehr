@@ -4,4 +4,9 @@ class Result < ActiveRecord::Base
   # ================
   belongs_to :profile
   
+  
+  # ===============
+  # = validations =
+  # ===============
+  validates :name, :result, :units, :date, :presence => true
 end
