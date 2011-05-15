@@ -5,7 +5,7 @@ class Api::MedicationsController < Api::BaseController
     @medication = @profile.medications.build(params[:medication])
 
     if @medication.save
-      render :json => @medication, :status => :created, :location => @medication
+      render :json => @medication, :status => :created
     else
       render :json => {:errors => @medication.errors.full_messages}, :status => :unprocessable_entity
     end

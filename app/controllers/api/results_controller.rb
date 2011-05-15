@@ -5,7 +5,7 @@ class Api::ResultsController < Api::BaseController
     @result = @profile.results.build(params[:result])
 
     if @result.save
-      render :json => @result, :status => :created, :location => @result
+      render :json => @result, :status => :created
     else
       render :json => {:errors => @result.errors.full_messages}, :status => :unprocessable_entity
     end
