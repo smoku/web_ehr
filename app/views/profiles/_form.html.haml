@@ -1,0 +1,7 @@
+= simple_form_for @profile do |f|
+  = f.input :name
+  = f.input :gender, :as => :radio, :collection => Profile::GENDERS.invert
+  = f.input :blood_type, :as => :select, :collection => Profile::BLOOD_TYPES
+  = f.input :birth_date
+  = f.association :users, :collection => User.all
+  = f.button :submit, "Save"

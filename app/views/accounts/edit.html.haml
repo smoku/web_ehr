@@ -1,0 +1,7 @@
+%h2 Edit account
+
+= simple_form_for @user, :url => account_path do |f|
+  = f.input :name
+  = f.input :surname
+  = f.input :email
+  = f.button :submit, "Save"

@@ -1,0 +1,17 @@
+%h2 Users
+
+- if @users.present?
+  #users_container
+    %table.zebra
+      %tr
+        %th{:style => "width: 35%"}= sort_link @search, :name, "Name"
+        %th{:style => "width: 15%"}= sort_link @search, :surname, "Surname"
+        %th{:style => "width: 25%"}= sort_link @search, :email, "Email"
+        %th.right{:style => "width: 25%"}= sort_link @search, :created_at, "Created at"
+      - @users.each do |user|
+        %tr{:class => cycle('even', 'odd')}
+          %td= user.name
+          %td= user.surname
+          %td= user.email
+          %td.right= l(user.created_at)
+  = will_paginate @users

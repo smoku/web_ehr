@@ -1,2 +1,34 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+jQuery.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript");} 
+});
+
+  
+jQuery(document).ready(function() {
+  // Loader
+  $('#loader').ajaxStart(function() {
+    $(this).show();
+  });
+  
+  $('#loader').ajaxComplete(function() {
+    $(this).fadeOut();
+  });
+
+  $('#loader').ajaxSuccess(function() {
+    $(this).fadeOut();
+  });
+  
+  // Zebra table
+  $('table.zebra tr.row').hover(function() {
+    $(this).addClass('hover');
+  }, function() {
+    $(this).removeClass('hover');
+  });
+  $('table.zebra tr.row').click(function() {
+    window.location.href = $('a', this).attr('href');
+  });
+  $('table.zebra').each(function() {
+    $(this).find('tr:last').addClass("last");
+  });
+  
+  $('.datepicker').datepicker($.datepicker.regional['pl']);
+});

@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title WebEHR
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}
+    = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui', 'form', 'style', 'application', :cache => true
+    = javascript_include_tag "jquery.min", "jquery-ui.min", "jquery.ui.datepicker-pl", "rails", "application", :cache => true
+    = csrf_meta_tag
+  %body{:class => "#{controller_name}_controller"}
+    #container{:class => action_name}
+      #sidebar
+        #logo
+          = link_to image_tag('logo.png'), root_path
+        %ul
+          %li.profiles{:class => selected_if(controller_name != "users")}
+            = link_to profiles_path do
+              Profiles
+              - if current_user.present?
+                %span.count= "(#{current_user.profiles.count})"
+          %li.users{:class => selected_if(controller_name == "users")}
+            = link_to users_path do
+              Users
+              - if current_user.present?
+                %span.count= "(#{User.count})"
+          %li.account{:class => selected_if(controller_name == "accounts")}
+            = link_to "Account", account_path
+        
+      #content
+        #flash
+          = flash_notice unless flash.blank?
+        = yield
+        
+    #loader 
+      = image_tag("/images/loader.gif")
+      Trwa ładowanie...

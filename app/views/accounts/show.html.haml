@@ -1,0 +1,14 @@
+%h2= @user.full_name
+
+.labeled_info
+  %p
+    %span.label Email address
+    %span= @user.email
+  %p
+    %span.label Created at
+    %span= l(@user.created_at)
+    
+%ul.crud_menu
+  %li.edit= link_to "Edit", edit_account_path
+  %li.change_password= link_to "Change password", edit_password_account_path
+  %li.delete= link_to "Logout", destroy_user_session_path

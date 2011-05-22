@@ -1,0 +1,23 @@
+%h2 Profiles
+
+.add_link= link_to "New profile", new_profile_path
+
+- if @profiles.present?
+  #profiles_container
+    %table.zebra
+      %tr
+        %th{:style => "width: 35%"}= sort_link @search, :name, "Name"
+        %th{:style => "width: 15%"}= sort_link @search, :gender, "Gender"
+        %th{:style => "width: 15%"}= sort_link @search, :blood_type, "Blood type"
+        %th{:style => "width: 15%"}= sort_link @search, :birth_date, "Birth date"
+        %th{:style => "width: 20%"}= sort_link @search, :created_at, "Created at"
+      - @profiles.each do |profile|
+        %tr.row{:class => cycle('even', 'odd')}
+          %td= link_to profile.name, profile_medications_path(profile)
+          %td= profile.gender_name
+          %td= profile.blood_type
+          %td= l(profile.birth_date) if profile.birth_date.present?
+          %td= l(profile.created_at)
+  = will_paginate @profiles
+- else
+  %p No profiles found.

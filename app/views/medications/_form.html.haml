@@ -1,0 +1,10 @@
+= simple_form_for [@profile, @medication] do |f|
+  = f.input :name
+  = f.input :started_date
+  = f.input :ended_date
+  = f.input :route, :as => :select, :collection => Medication::ROUTES
+  = f.input :strength
+  = f.input :dose, :label => "How many?", :as => :select, :collection => Medication::DOSES
+  = f.input :frequency, :label => "How often?", :as => :select, :collection => Medication::FREQUENCIES
+  = f.input :note
+  = f.button :submit, "Save"

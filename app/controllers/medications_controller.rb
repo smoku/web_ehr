@@ -1,83 +1,56 @@
 class MedicationsController < ApplicationController
-  # GET /medications
-  # GET /medications.xml
+  before_filter :find_parent_resource
+  before_filter :find_resource, :only => [:edit, :update, :destroy]
+
   def index
-    @medications = Medication.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json  { render :json => @medications }
-    end
+    @search = @profile.medications.search(params[:search])
+    @search.meta_sort ||= "created_at.desc"
+    @medications = @search.paginate :per_page => 20, :page => params[:page]
   end
 
-  # GET /medications/1
-  # GET /medications/1.xml
-  def show
-    @medication = Medication.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json  { render :json => @medication }
-    end
-  end
-
-  # GET /medications/new
-  # GET /medications/new.xml
   def new
-    @medication = Medication.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json  { render :json => @medication }
-    end
+    @medication = @profile.medications.build
   end
 
-  # GET /medications/1/edit
-  def edit
-    @medication = Medication.find(params[:id])
-  end
-
-  # POST /medications
-  # POST /medications.xml
   def create
-    @medication = Medication.new(params[:medication])
-
-    respond_to do |format|
-      if @medication.save
-        format.html { redirect_to(@medication, :notice => 'Medication was successfully created.') }
-        format.json  { render :json => @medication, :status => :created, :location => @medication }
-      else
-        format.html { render :action => "new" }
-        format.json  { render :json => @medication.errors, :status => :unprocessable_entity }
-      end
+    @medication = @profile.medications.build(params[:medication])
+    
+    if @medication.save
+      flash[:notice] = "Medication was successfully created"
+      redirect_to profile_medications_path(@profile)
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /medications/1
-  # PUT /medications/1.xml
+  def edit
+    @profile = @medication.profile
+  end
+  
   def update
-    @medication = Medication.find(params[:id])
-
-    respond_to do |format|
-      if @medication.update_attributes(params[:medication])
-        format.html { redirect_to(@medication, :notice => 'Medication was successfully updated.') }
-        format.json  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json  { render :json => @medication.errors, :status => :unprocessable_entity }
-      end
+    @profile = @medication.profile
+    
+    if @medication.update_attributes(params[:medication])
+      flash[:notice] = "Medication was successfully updated"
+      redirect_to profile_medications_path(@profile)
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /medications/1
-  # DELETE /medications/1.xml
   def destroy
-    @medication = Medication.find(params[:id])
     @medication.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(medications_url) }
-      format.json  { head :ok }
-    end
+    
+    flash[:notice] = "Medication was successfully deleted"
+    redirect_to profile_medications_path(@medication.profile)
+  end
+  
+  private
+  def find_parent_resource
+    @profile = current_user.profiles.find(params[:profile_id])
+  end
+  
+  def find_resource
+    @medication = @profile.medications.find(params[:id])
   end
 end

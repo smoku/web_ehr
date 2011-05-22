@@ -1,0 +1,26 @@
+= render "profiles/header", :profile => @profile
+
+.add_link= link_to "New result", new_profile_result_path(@profile)
+
+- if @results.present?
+  #results_container
+    %table.zebra
+      %tr
+        %th{:style => "width: 30%"}= sort_link @search, :name, "Name"
+        %th{:style => "width: 20%"} Result
+        %th{:style => "width: 20%"}= sort_link @search, :date, "Date"
+        %th{:style => "width: 20%"}= sort_link @search, :created_at, "Created at"
+        %th{:style => "width: 10%"}
+      - @results.each do |result|
+        %tr{:class => cycle('even', 'odd')}
+          %td= result.name
+          %td= "#{result.result} #{result.units}"
+          %td= l(result.date)
+          %td= l(result.created_at)
+          %td
+            %ul.icon_menu
+              %li= link_to image_tag("icons/edit.png", :alt => "edit"), edit_profile_result_path(@profile, result)
+              %li= link_to image_tag("icons/delete.png", :alt => "delete"), profile_result_path(@profile, result), :method => :delete, :confirm => "Do you really want to delete this result?"
+  = will_paginate @results
+- else
+  %p No results found.
