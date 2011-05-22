@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title WebEHR
+    %title Electronic Health Record
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}
     = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui', 'form', 'style', 'application', :cache => true
     = javascript_include_tag "jquery.min", "jquery-ui.min", "jquery.ui.datepicker-pl", "rails", "application", :cache => true
@@ -10,7 +10,7 @@
     #container{:class => action_name}
       #sidebar
         #logo
-          = link_to image_tag('logo.png'), root_path
+          = link_to image_tag('logo.png', :alt => "EHR"), root_path
         %ul
           %li.profiles{:class => selected_if(controller_name != "users")}
             = link_to profiles_path do
