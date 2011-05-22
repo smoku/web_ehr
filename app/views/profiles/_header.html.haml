@@ -1,9 +1,21 @@
 #profile_header
-  %h2= @profile.name
-  
-  = link_to "Medications", profile_medications_path(@profile)
-  = link_to "Results", profile_results_path(@profile)
+  .top
+    %h2= @profile.name
+    %ul.crud_menu
+      %li.edit= link_to "Edit", edit_profile_path(@profile)
+      %li.delete= link_to "Delete", profile_path(@profile), :method => :delete, :confirm => "Do you really want to delete this profile?"
+  .labeled_info
+    %p
+      %span.label Gender
+      %span= @profile.gender_name
+    %p
+      %span.label Birth date
+      %span= l(@profile.birth_date)
+    %p
+      %span.label Blood type
+      %span= @profile.blood_type
   
   %ul.crud_menu
-    %li.edit= link_to "Edit", edit_profile_path(@profile)
-    %li.delete= link_to "Delete", profile_path(@profile), :method => :delete, :confirm => "Do you really want to delete this profile?"
+    %li.medications= link_to "Medications", profile_medications_path(@profile)
+    %li.results= link_to "Results", profile_results_path(@profile)
+  

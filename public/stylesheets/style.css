@@ -43,6 +43,12 @@ ul.icon_menu li {
   .crud_menu li.change_password {
     background: url("/images/icons/change_password.png") 0 50% no-repeat;
     padding: 2px 10px 2px 20px; }
+  .crud_menu li.medications {
+    background: url("/images/icons/medications.png") 0 50% no-repeat;
+    padding: 2px 10px 2px 20px; }
+  .crud_menu li.results {
+    background: url("/images/icons/results.png") 0 50% no-repeat;
+    padding: 2px 10px 2px 20px; }
 
 ul.sortable_list {
   list-style: none; }
@@ -203,6 +209,28 @@ table.zebra {
   -webkit-border-radius: 6px; }
   #loader img {
     vertical-align: middle; }
+
+#profile_header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dddddd; }
+  #profile_header .top {
+    overflow: hidden; }
+    #profile_header .top h2 {
+      font-size: 24px;
+      float: left;
+      margin-bottom: 3px; }
+    #profile_header .top ul.crud_menu {
+      float: right;
+      margin-top: 0; }
+  #profile_header ul.crud_menu {
+    margin-top: 10px; }
+    #profile_header ul.crud_menu li {
+      padding-right: 20px; }
+  #profile_header .labeled_info p {
+    margin: 2px 0; }
+  #profile_header .labeled_info span.label {
+    width: 100px; }
 
 .add_link {
   text-align: right;

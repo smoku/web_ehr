@@ -1,5 +1,7 @@
 = render "profiles/header", :profile => @profile
 
+%h2 Medications
+
 .add_link= link_to "New medication", new_profile_medication_path(@profile)
 
 - if @medications.present?

@@ -1,5 +1,7 @@
 = render "profiles/header", :profile => @profile
 
+%h2 Results
+
 .add_link= link_to "New result", new_profile_result_path(@profile)
 
 - if @results.present?
