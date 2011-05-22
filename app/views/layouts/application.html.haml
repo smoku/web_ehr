@@ -3,8 +3,8 @@
   %head
     %title Electronic Health Record
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}
-    = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui', 'form', 'style', 'application', :cache => true
-    = javascript_include_tag "jquery.min", "jquery-ui.min", "jquery.ui.datepicker-pl", "rails", "application", :cache => true
+    = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui', 'form', 'style', 'application'
+    = javascript_include_tag "jquery.min", "jquery-ui.min", "jquery.ui.datepicker-pl", "rails", "application"
     = csrf_meta_tag
   %body{:class => "#{controller_name}_controller"}
     #container{:class => action_name}
