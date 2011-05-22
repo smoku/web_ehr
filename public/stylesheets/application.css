@@ -83,10 +83,16 @@ h2 {
 .medications_controller .add_link a {
   background: url("/images/icons/new_medication.png") 0 50% no-repeat;
   padding-left: 22px; }
+.medications_controller form.medication #medication_strength {
+  width: 120px; }
 
 .results_controller .add_link a {
   background: url("/images/icons/new_result.png") 0 50% no-repeat;
   padding-left: 22px; }
+.results_controller form.result #result_result {
+  width: 200px; }
+.results_controller form.result #result_units {
+  width: 100px; }
 
 .devise_links {
   margin-top: 20px;
