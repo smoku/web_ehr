@@ -78,9 +78,27 @@ h2
 
 
 .profiles_controller
-  .add_link a
-    background: url('/images/icons/new_profile.png') 0 50% no-repeat
-    padding-left: 22px
+  .top
+    overflow: hidden
+    margin: 20px 0 15px 0
+    .search
+      float: left
+      input
+        font-size: 13px
+        width: 200px
+        background: url('/images/icons/search.png') 3px 50% no-repeat
+        padding: 2px 2px 2px 25px
+        border: 1px solid #b1b1b1
+        -webkit-border-radius: 5px
+        -moz-border-radius: 5px
+        border-radius: 5px
+    .add_link 
+      float: right
+      margin: 0
+      a
+        background: url('/images/icons/new_profile.png') 0 50% no-repeat
+        padding-left: 22px
+        
     
 .medications_controller
   .add_link a

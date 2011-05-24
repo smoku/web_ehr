@@ -4,19 +4,6 @@ jQuery.ajaxSetup({
 
   
 jQuery(document).ready(function() {
-  // Loader
-  $('#loader').ajaxStart(function() {
-    $(this).show();
-  });
-  
-  $('#loader').ajaxComplete(function() {
-    $(this).fadeOut();
-  });
-
-  $('#loader').ajaxSuccess(function() {
-    $(this).fadeOut();
-  });
-  
   // Zebra table
   $('table.zebra tr.row').hover(function() {
     $(this).addClass('hover');
@@ -31,4 +18,15 @@ jQuery(document).ready(function() {
   });
   
   $('.datepicker').datepicker($.datepicker.regional['pl']);
+  
+  $('.profiles_controller .search input').keyup(function() {
+    if ($(this).val() != "") {
+      $('.search .indicator').show();
+      $.get('/profiles', { "search[name_like]": $(this).val() }, null, "script");
+    } else {
+      $('#profiles_container .search_results').html("");
+      $('.search .indicator').hide();
+      $('#profiles_container table').show();
+    }
+  });
 });

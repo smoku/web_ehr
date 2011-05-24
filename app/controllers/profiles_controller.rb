@@ -6,6 +6,11 @@ class ProfilesController < ApplicationController
     @search = current_user.profiles.search(params[:search])
     @search.meta_sort ||= "name.desc"
     @profiles = @search.paginate :per_page => 20, :page => params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def new

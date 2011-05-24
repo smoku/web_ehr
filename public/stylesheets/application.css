@@ -76,9 +76,26 @@ h2 {
   font-weight: bold;
   font-style: italic; }
 
-.profiles_controller .add_link a {
-  background: url("/images/icons/new_profile.png") 0 50% no-repeat;
-  padding-left: 22px; }
+.profiles_controller .top {
+  overflow: hidden;
+  margin: 20px 0 15px 0; }
+  .profiles_controller .top .search {
+    float: left; }
+    .profiles_controller .top .search input {
+      font-size: 13px;
+      width: 200px;
+      background: url("/images/icons/search.png") 3px 50% no-repeat;
+      padding: 2px 2px 2px 25px;
+      border: 1px solid #b1b1b1;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px; }
+  .profiles_controller .top .add_link {
+    float: right;
+    margin: 0; }
+    .profiles_controller .top .add_link a {
+      background: url("/images/icons/new_profile.png") 0 50% no-repeat;
+      padding-left: 22px; }
 
 .medications_controller .add_link a {
   background: url("/images/icons/new_medication.png") 0 50% no-repeat;
