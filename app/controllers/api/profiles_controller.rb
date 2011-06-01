@@ -1,7 +1,7 @@
 class Api::ProfilesController < Api::BaseController
   
   def index
-    @profiles = Profile.includes([:medications, :results]).all
+    @profiles = current_user.profiles.includes([:medications, :results]).all
     
     # Configure json output
     profile_fields = [:id, :name, :birth_date, :blood_type, :gender]

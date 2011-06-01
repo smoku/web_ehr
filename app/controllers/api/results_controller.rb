@@ -20,6 +20,6 @@ class Api::ResultsController < Api::BaseController
   
   private
   def find_profile
-    @profile = Profile.find(params[:profile_id])
+    @profile = current_user.profiles.find(params[:profile_id])
   end
 end
